@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --- RESET GLOBAL --- */
+
+html {
+    /* Força rolagem suave nativa para links âncoras em todos os navegadores */
+    scroll-behavior: smooth;
+    /* Suaviza a renderização de fontes no Safari e macOS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    background-color: #1a1a1a;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    /* Remove o destaque azul padrão ao tocar em elementos no mobile */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Garante que imagens nunca estourem os limites dos containers */
+img, svg {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importação das fontes Orbitron e Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    
+    <title>Glass Digital</title>
+
+    <!-- Favicon da Aba -->
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
+
+    <!-- Importação do Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Link do arquivo CSS local -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Estilo temporário apenas para testarmos o efeito de vidro do Header -->
+    <style>
+        body {
+            /* Imagem de fundo para você ver o efeito borrado do header funcionando */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased font-sans text-white overflow-x-hidden bg-[#0A0A0A]">
+   <!-- HEADER COM COMPORTAMENTO DE ESCONDER AO ROLAR -->
+<header id="header" class="w-full bg-black/70 backdrop-blur-sm px-4 py-2 md:px-8 md:py-4 flex items-center border-b border-gray-700 fixed top-0 z-50 transition-transform duration-300">
+        
+        <!-- Contêiner do Logo à esquerda -->
+        <div class="flex items-center gap-x-2 flex-shrink-0">
+            <a href="/" class="flex flex-col items-center">
+                <!-- h-[56px] para celular e md:h-[80px] para desktop -->
+                <img src="images/logoheader100.webp" alt="Glass Digital Logo" style="height: 64px;" class="md:h-[80px] w-auto object-contain" loading="eager">
+            </a>
+        </div>
+ 
+        <!-- Navegação principal -->
+        <nav class="flex-grow flex justify-end md:pr-8">
+            <ul class="flex gap-x-6 md:gap-x-10 text-white font-medium text-sm md:text-base" style="font-family: 'Montserrat', sans-serif;">
+                <li>
+                    <a href="politicas.html" class="hover:text-[#10e608] transition-colors duration-200">Politicas</a>
+                </li>
+                <li>
+                    <a href="termos.html" class="hover:text-[#10e608] transition-colors duration-200">Termos de uso</a>
+                </li>
+                <li>
+                    <a href="#sobrenos" class="hover:text-[#10e608] transition-colors duration-200">Sobre nós</a>
+                </li>
+                <li>
+                    <a href="#contato" class="hover:text-[#10e608] transition-colors duration-200">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        
+    </header>
+<main>
+    <!-- SCRIPT DE CONTROLE DO SCROLL DO HEADER -->
+    <script>
+        let lastScrollTop = 0;
+        const header = document.getElementById("header");
+        const scrollThreshold = 50; // Quantidade de pixels de rolagem antes de ativar o efeito
+
+        window.addEventListener("scroll", function() {
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > lastScrollTop && currentScroll > scrollThreshold) {
+                // Rolando para baixo -> Esconde o header
+                header.classList.add("-translate-y-full");
+            } else {
+                // Rolando para cima -> Mostra o header
+                header.classList.remove("-translate-y-full");
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Evita valores negativos no topo
+        }, false);
+    </script>
+    <div id="cookie-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md hidden">
+        
+        <!-- CAIXA DO BANNER (Quadrada/Retangular) -->
+        <div class="bg-[#1a1a1a] w-full max-w-md p-8 mx-4 rounded-[5px] shadow-[0_0_40px_rgba(0,0,0,0.8)] flex flex-col text-center" style="font-family: 'Montserrat', sans-serif;">
+            
+            <h3 class="text-white text-xl font-bold mb-4">Sua privacidade importa</h3>
+            
+            <!-- Texto formatado para LGPD -->
+            <p class="text-gray-300 text-sm md:text-base mb-8 leading-relaxed font-normal">
+                Utilizamos cookies essenciais e tecnologias de parceiros (como Google e Meta) para analisar nosso tráfego, personalizar conteúdo e exibir anúncios relevantes. Ao clicar em "Aceitar", você concorda com o uso dessas tecnologias, conforme nossa <a href="politicas.html" class="text-[#00dd00] hover:underline">Política de Privacidade</a> e <a href="termos.html" class="text-[#00dd00] hover:underline">Termos de Uso</a>.
+            </p>
+
+            <!-- Botões -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center font-semibold">
+                <!-- Botão Negar (Vermelho Rosado) -->
+                <button onclick="denyCookies()" class="w-full sm:w-auto px-8 py-3 bg-[#f43f5e] text-white rounded-[5px] hover:bg-[#e11d48] transition-colors duration-300">
+                    Negar
+                </button>
+                <!-- Botão Aceitar (Verde do site) -->
+                <button onclick="acceptCookies()" class="w-full sm:w-auto px-8 py-3 bg-[#00dd00] text-black rounded-[5px] hover:bg-[#00ff00] transition-colors duration-300 shadow-[0_0_15px_rgba(0,221,0,0.2)] hover:shadow-[0_0_20px_rgba(0,221,0,0.5)]">
+                    Aceitar
+                </button>
+            </div>
+            
+        </div>
+    </div>
+
+<!-- OVERLAY E BANNER DE COOKIES LGPD -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cookieModal = document.getElementById('cookie-modal');
+            const cookieConsent = localStorage.getItem('glassDigitalCookieConsent');
+
+            // Se o usuário ainda não respondeu (não tem registro salvo), mostra o modal
+            if (!cookieConsent) {
+                cookieModal.classList.remove('hidden');
+            } else if (cookieConsent === 'accepted') {
+                // Se ele já aceitou no passado, injeta os scripts automaticamente sem mostrar o banner
+                injectTrackingScripts();
+            }
+        });
+
+        // Função disparada ao clicar em "Aceitar"
+        function acceptCookies() {
+            localStorage.setItem('glassDigitalCookieConsent', 'accepted'); // Salva a escolha
+            document.getElementById('cookie-modal').classList.add('hidden'); // Esconde o banner
+            injectTrackingScripts(); // Roda os códigos do Google/Meta
+        }
+
+        // Função disparada ao clicar em "Negar"
+        function denyCookies() {
+            localStorage.setItem('glassDigitalCookieConsent', 'denied'); // Salva a recusa
+            document.getElementById('cookie-modal').classList.add('hidden'); // Esconde o banner
+            // Nenhum script de rastreamento é executado
+        }
+
+        // Função responsável por criar as tags e injetar no site
+        function injectTrackingScripts() {
+            
+            // ==========================================
+            // INJEÇÃO DO GOOGLE ANALYTICS
+            // ==========================================
+            const gaId = '[cole o id do google aqui]'; 
+            
+            const gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+            document.head.appendChild(gaScript);
+
+            const gaConfig = document.createElement('script');
+            gaConfig.innerHTML = `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}');
+            `;
+            document.head.appendChild(gaConfig);
+
+            // ==========================================
+            // INJEÇÃO DO META PIXEL
+            // ==========================================
+            const metaId = '[cole o id do pixel da meta aqui]'; 
+            
+            const metaScript = document.createElement('script');
+            metaScript.innerHTML = `
+                !function(f,b,e,v,n,t,s)
+                {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init', '${metaId}');
+                fbq('track', 'PageView');
+            `;
+            document.head.appendChild(metaScript);
+        }
+    </script>
+
+<!--Hero banner/section-->
+   <section class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-black pt-24 md:pt-0">
+        
+        <div class="absolute inset-0 w-full h-full bg-[url('images/herobanner.webp')] bg-cover bg-no-repeat bg-center md:bg-right z-0"></div>
+        
+        <div class="absolute inset-0 bg-black/70 opacity-80 md:bg-gradient-to-r md:from-black md:via-black/90 md:to-transparent z-10"></div>
+
+        <div class="absolute inset-0 z-20 opacity-15 bg-[linear-gradient(to_right,#eeeeee_1px,transparent_1px),linear-gradient(to_bottom,#eeeeee_1px,transparent_1px)] bg-[size:65px_65px]"></div>
+
+        <div class="relative z-30 flex flex-col items-center text-center px-[20px] max-w-5xl mx-auto">
+            
+            <h1 class="text-white mb-6 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+                Você investe tanto na sua fachada <br class="hidden md:block">
+                fisica, mas e na sua <span class="text-[#00dd00]">digital</span> ?
+            </h1>
+
+            <p class="text-white mb-12 max-w-2xl" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400;">
+                A internet é a rua mais movimentada do mundo
+            </p>
+
+            <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[60px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+    Quero meu website
+    <span class="group-hover:translate-x-1 transition-transform">→</span>
+</a>
+
+        </div>
+    </section>
+
+    <!-- Section 2 -->
+   <!-- SECTION 2 -->
+    <section class="w-full bg-transparent py-20 relative z-30">
+        <!-- Contêiner padronizado: max-w-5xl e px-[20px] -->
+        <div class="max-w-5xl w-full mx-auto px-[20px]">
+            
+            <!-- Alinhamento vertical centralizado (items-center) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-[24px] items-center">
+                
+                <!-- TÍTULO: 5 Colunas -->
+                <div class="md:col-span-5">
+                    <h2 class="text-[#00dd00] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+                        Te entendemos
+                    </h2>
+                </div>
+
+                <!-- TEXTO: 6 Colunas, começando na 7ª (empurrado para a direita) -->
+                <div class="md:col-span-6 md:col-start-7">
+                    <p class="text-white" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 400;">
+                        Você investe milhares de reais na sua fachada física, mas deixa a sua vitrine digital abandonada. O resultado? O seu cliente pesquisa pelo seu serviço no celular, encontra um site confuso (ou não encontra nada), e acaba comprando do seu concorrente
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+<!-- SECTION 3 O Formato Ideal -->
+<section class="w-full bg-[#0a0a0a] py-12 xl:py-16 flex items-center justify-center relative overflow-hidden">
+    
+    <!-- 1. CAMADA DE FUNDO (GRID) -->
+    <div class="absolute inset-0 z-0 opacity-15 bg-[linear-gradient(to_right,#eeeeee_1px,transparent_1px),linear-gradient(to_bottom,#eeeeee_1px,transparent_1px)] bg-[size:65px_65px] bg-[position:32px_32px]"></div>
+    
+    <!-- 2. CONTEÚDO PRINCIPAL -->
+    <div class="max-w-[1920px] w-full mx-auto px-[20px] flex flex-col items-center relative z-10">
+        
+        <!-- SECTION TITLE -->
+        <h2 class="text-[#10e608] text-center mb-6 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+            O formato ideal para a sua nova <strong>fachada digital</strong>.
+        </h2>
+
+        <!-- SECTION SUBTITLE -->
+        <p class="text-white text-center mb-10 max-w-3xl" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 400;">
+            Criamos sites rápidos e desenhados para transmitir credibilidade e gerar vendas.
+        </p>
+
+        <!-- CARDS GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[24px] w-full mb-10">
+            
+            <!-- CARD 1: Landing Pages -->
+            <div class="bg-[#101010] border border-[#eeeeee] rounded-[15px] p-6 flex flex-col h-full">
+                <div class="mb-4 h-8 w-8">
+                    <img src="images/rocketlp.webp" alt="Landing Pages Icon" class="w-full h-full object-contain">
+                </div>
+                <h3 class="text-[#EEEEEE] mb-3" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+                    Landing pages
+                </h3>
+                <p class="text-[#eeeeee]" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                    Páginas de alta conversão focadas em um único objetivo: transformar o seu visitante em cliente de forma rápida, sem distrações
+                </p>
+            </div>
+
+            <!-- CARD 2: One Pages -->
+            <div class="bg-[#101010] border border-[#eeeeee] rounded-[15px] p-6 flex flex-col h-full">
+                <div class="text-white mb-4 h-8 flex items-end">
+                    <span class="text-3xl border-b-2 border-white leading-none pb-1 pr-1" style="font-family: 'Orbitron', sans-serif;">1</span>
+                </div>
+                <h3 class="text-[#EEEEEE] mb-3" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+                    One Pages
+                </h3>
+                <p class="text-[#eeeeee]" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                    Todas as informações do seu negócio organizadas em uma única página rápida e dinâmica. A escolha perfeita para quem busca agilidade e impacto visual
+                </p>
+            </div>
+
+            <!-- CARD 3: Sites Institucionais -->
+            <div class="bg-[#101010] border border-[#eeeeee] rounded-[15px] p-6 flex flex-col h-full">
+                <div class="mb-4 h-8 w-8">
+                    <img src="images/badge.webp" alt="Sites Institucionais Icon" class="w-full h-full object-contain">
+                </div>
+                <h3 class="text-[#EEEEEE] mb-3" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+                    Sites Institucionais
+                </h3>
+                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                    A vitrine completa da sua empresa. A estrutura ideal para apresentar seus serviços, portfólio e blindar o profissionalismo do seu nome na internet.
+                </p>
+            </div>
+
+            <!-- CARD 4: E-commerces -->
+            <div class="bg-[#101010] border border-[#eeeeee] rounded-[15px] p-6 flex flex-col h-full">
+                <div class="mb-4 h-8 w-8">
+                    <img src="images/stores.webp" alt="E-commerces Icon" class="w-full h-full object-contain">
+                </div>
+                <h3 class="text-[#EEEEEE] mb-3" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+                    E-commerces
+                </h3>
+                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                    Lojas virtuais simplificadas, seguras e fáceis de gerenciar. O seu melhor vendedor trabalhando para o seu negócio 24 horas por dia. Feitas via Shopify ou Wix
+                </p>
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+        <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[60px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+            Quero meu website
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+
+    </div>
+</section>
+<section class="w-full bg-transparent py-12 xl:py-16 flex items-center justify-center relative overflow-hidden">
+
+        <!-- CONTEÚDO PRINCIPAL -->
+
+        <!-- px-[24px] garante o gap exato nas laterais -->
+
+        <div class="max-w-[1920px] w-full mx-auto px-[24px] flex flex-col items-center relative z-10">
+
+           
+
+            <!-- SECTION TITLE -->
+
+            <!-- mb-[64px] para o gap vertical exato solicitado -->
+
+            <h2 class="text-[#00dd00] text-center mb-[64px] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+
+                E por que a Glass Digital ?
+
+            </h2>
+
+
+
+            <!-- CARDS GRID -->
+
+            <!-- 3 colunas em telas grandes (xl:grid-cols-3) com gap de 24px -->
+
+            <!-- mb-[64px] para o gap vertical entre os cards e o botão -->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[24px] w-full mb-[64px]">
+
+               
+
+                <!-- CARD 1: Tecnologia Vidro fumê -->
+
+                <!-- h-[452px] para cravar a altura do Figma -->
+
+                <div class="rounded-[15px] p-10 flex flex-col h-[452px] border border-transparent" style="background: linear-gradient(#101010, #101010) padding-box, linear-gradient(to bottom right, #5504AF 0%, #6E1DA8 100%) border-box;">
+
+                    <!-- Ícone -->
+
+                    <div class="mb-8 h-10 w-10">
+
+                        <img src="images/vidrofume.webp" alt="Tecnologia Vidro fumê" class="w-full h-full object-contain">
+
+                    </div>
+
+                    <!-- Título do Card -->
+
+                    <h3 class="text-[#EEEEEE] mb-6" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+
+                        Tecnologia Vidro fumê
+
+                    </h3>
+
+                    <!-- Texto do Card -->
+
+                    <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 2.6;">
+
+                        Para sites e páginas de conversão, blindamos o código com a tecnologia Vidro Fumê, protegendo a sua estrutura contra ameaças invisíveis. Já para o seu e-commerce, unimos o nosso design focado em vendas à infraestrutura de segurança das maiores plataformas do mercado global
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 2: SEO e performance -->
+
+                <div class="bg-[#101010] rounded-[15px] p-10 flex flex-col h-[452px] border border-[#eeeeee]/10">
+
+                    <!-- Ícone -->
+
+                    <div class="mb-8 h-10 w-10">
+
+                        <img src="images/magnify.webp" alt="SEO e performance" class="w-full h-full object-contain">
+
+                    </div>
+
+                    <!-- Título do Card -->
+
+                    <h3 class="text-[#EEEEEE] mb-6" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+
+                        SEO e performance
+
+                    </h3>
+
+                    <!-- Texto do Card -->
+
+                    <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 2.6;">
+
+                        Ser encontrado no Google é apenas o primeiro passo. Construímos a sua vitrine digital otimizada para as buscas (SEO) e com carregamento instantâneo. Assim, novos clientes acham a sua empresa facilmente e não fogem para a concorrência por causa de lentidão no celular.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- CARD 3: Design estratégico -->
+
+                <div class="bg-[#101010] rounded-[15px] p-10 flex flex-col h-[452px] border border-[#eeeeee]/10">
+
+                    <!-- Ícone -->
+
+                    <div class="mb-8 h-10 w-10">
+
+                        <img src="images/brilho.webp" alt="Design estratégico" class="w-full h-full object-contain">
+
+                    </div>
+
+                    <!-- Título do Card -->
+
+                    <h3 class="text-[#EEEEEE] mb-6" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+
+                        Design estratégico
+
+                    </h3>
+
+                    <!-- Texto do Card -->
+
+                    <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 2.6;">
+
+                        Nós não fazemos apenas páginas bonitas, construímos ferramentas de negócios. Cada botão, texto e imagem da sua fachada digital é posicionado estrategicamente para guiar o cliente. Quanto mais fácil for navegar, mais vendas você fecha.
+
+                    </p>
+
+                </div>
+
+
+
+            </div>
+
+
+
+            <!-- BUTTON -->
+
+            <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[60px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+
+    Quero meu website
+
+    <span class="group-hover:translate-x-1 transition-transform">→</span>
+
+</a>
+
+
+
+        </div>
+
+    </section> 
+
+
+    
+<!-- SECTION 5: Quem somos? -->
+    
+    <section id="sobrenos" class="w-full bg-transparent py-16 relative overflow-hidden">
+        
+        <!-- 1. CAMADA DE FUNDO DA SEÇÃO (GRID) -->
+        <div class="absolute inset-0 z-0 opacity-15 bg-[linear-gradient(to_right,#eeeeee_1px,transparent_1px),linear-gradient(to_bottom,#eeeeee_1px,transparent_1px)] bg-[size:65px_65px] bg-[position:32px_32px]"></div>
+
+        <!-- 2. CONTEÚDO PRINCIPAL -->
+        <!-- Contêiner padronizado: max-w-5xl e px-[20px] (Igual a Seção 2) -->
+        <div class="max-w-5xl w-full mx-auto px-[20px] relative z-10">
+            
+            <!-- Alinhamento vertical centralizado (items-center) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-[24px] items-center">
+                
+                <!-- TÍTULO: 5 Colunas -->
+                <div class="md:col-span-5">
+                    <h2 class="text-[#00dd00] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+                        Quem somos ?
+                    </h2>
+                </div>
+
+                <!-- TEXTO -->
+                <div class="md:col-span-6 md:col-start-7 relative">
+                    
+                   
+
+                    <!-- TEXTOS -->
+                    <div class="relative z-10 text-white space-y-4" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 400; line-height: 1.6;">
+    <p>
+        Diversos negócios investem pesado em suas fachadas, na arquitetura, no letreiro e na beleza do espaço para atrair as pessoas que passam na rua. Mas por que esses mesmos negócios ainda deixam passar clientes todos os dias por adiarem o <strong class="font-normal">investimento no digital</strong>?
+    </p>
+    <p>
+        O problema é que, como sabemos hoje, a internet é a rua mais movimentada do mundo.
+    </p>
+    <p>
+        O seu cliente pesquisa pelo seu serviço no celular, e se a sua vitrine for amadora, confusa, o seu potencial cliente desiste da compra ou vai para o concorrente... E o pior: de maneira silenciosa. O seu negócio deixa muito dinheiro na mesa diariamente.
+    </p>
+    <p>
+        A <strong class="font-normal">Glass Digital</strong> foi criada exatamente para resolver esse problema e garantir que a credibilidade e o profissionalismo do seu negócio sejam transmitidos na internet.
+    </p>
+</div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 6: FAQ (Dúvidas Frequentes) -->
+    <section class="w-full bg-[#0a0a0a] py-24 relative overflow-hidden">
+        
+        <!-- Contêiner mais estreito (max-w-4xl) para leitura confortável no desktop -->
+        <div class="max-w-4xl mx-auto px-[24px] relative z-10">
+            
+            <!-- SECTION TITLE -->
+            <h2 class="text-[#10e608] text-center mb-16 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+                Duvidas frequentes
+            </h2>
+
+            <!-- FAQ ACCORDION CONTAINER -->
+            <!-- Borda superior que inicia a lista -->
+            <div class="flex flex-col w-full border-t border-[#eeeeee]/20">
+                
+                <!-- ITEM 1 -->
+                <div class="relative w-full border-b border-[#eeeeee]/20 group">
+                    <!-- Checkbox invisível -->
+                    <input type="checkbox" class="peer absolute top-0 inset-x-0 w-full h-[80px] opacity-0 z-10 cursor-pointer">
+                    
+                    
+                    <div class="flex items-center justify-between w-full h-[80px] peer-checked:[&_.setinha]:-rotate-180">
+                        <h3 class="text-white group-hover:text-[#10e608] transition-colors duration-300" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 500;">
+                            Meu negócio é pequeno, o site é para mim ?
+                        </h3>
+                      
+                        <div class="setinha h-4 w-4 transition-transform duration-300 flex items-center justify-center flex-shrink-0 ml-4">
+                            <img src="images/chevron75.webp" alt="Expandir" class="w-full h-full object-contain" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <!-- Resposta -->
+                    <div class="grid grid-rows-[0fr] transition-all duration-300 peer-checked:grid-rows-[1fr]">
+                        <div class="overflow-hidden">
+                            <p class="pb-8 text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                                Com certeza. Hoje, até os menores negócios precisam transmitir credibilidade para competir no mercado. Ter uma vitrine digital profissional nivela o jogo e faz sua empresa parecer tão grande e confiável quanto seus maiores concorrentes, passando a segurança que o seu cliente precisa para fechar negócio com você.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ITEM 2 -->
+                <div class="relative w-full border-b border-[#eeeeee]/20 group">
+                    <input type="checkbox" class="peer absolute top-0 inset-x-0 w-full h-[80px] opacity-0 z-10 cursor-pointer">
+                    
+                    <div class="flex items-center justify-between w-full h-[80px] peer-checked:[&_.setinha]:-rotate-180">
+                        <h3 class="text-white group-hover:text-[#10e608] transition-colors duration-300" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 500;">
+                            Preciso entender de tecnologia ou programação ?
+                        </h3>
+                        <div class="setinha h-4 w-4 transition-transform duration-300 flex items-center justify-center flex-shrink-0 ml-4">
+                            <img src="images/chevron75.webp" alt="Expandir" class="w-full h-full object-contain" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-rows-[0fr] transition-all duration-300 peer-checked:grid-rows-[1fr]">
+                        <div class="overflow-hidden">
+                            <p class="pb-8 text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                                Absolutamente nada. Nós somos a sua equipe técnica e cuidamos de tudo. Desde a criação do design estratégico até a programação e configuração dos servidores. O seu único trabalho será aprovar o projeto e preparar a sua equipe para receber os contatos e vendas gerados pelo novo site.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ITEM 3 -->
+                <div class="relative w-full border-b border-[#eeeeee]/20 group">
+                    <input type="checkbox" class="peer absolute top-0 inset-x-0 w-full h-[80px] opacity-0 z-10 cursor-pointer">
+                    
+                    <div class="flex items-center justify-between w-full h-[80px] peer-checked:[&_.setinha]:-rotate-180">
+                        <h3 class="text-white group-hover:text-[#10e608] transition-colors duration-300" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 500;">
+                            Depois de entregue, eu terei suporte ?
+                        </h3>
+                        <div class="setinha h-4 w-4 transition-transform duration-300 flex items-center justify-center flex-shrink-0 ml-4">
+                            <img src="images/chevron75.webp" alt="Expandir" class="w-full h-full object-contain" loading="lazy">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-rows-[0fr] transition-all duration-300 peer-checked:grid-rows-[1fr]">
+                        <div class="overflow-hidden">
+                            <p class="pb-8 text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                                Sim! Nós não entregamos o site e desaparecemos. Oferecemos pacotes de suporte técnico para garantir que sua estrutura digital continue no ar, rápida e totalmente segura contra ataques, além de estarmos à disposição para eventuais dúvidas de uso.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- SECTION 7: Contato -->
+    <section id="contato" class="w-full bg-transparent py-24 relative overflow-hidden">
+        
+    <!-- 1. CAMADA DE FUNDO (GRID) COM POSIÇÃO CENTRALIZADA -->
+    <div class="absolute inset-0 z-0 opacity-15 bg-[linear-gradient(to_right,#eeeeee_1px,transparent_1px),linear-gradient(to_bottom,#eeeeee_1px,transparent_1px)] bg-[size:65px_65px] bg-[position:32px_32px]"></div>
+    <!-- 2. CONTEÚDO PRINCIPAL -->
+    <div class="max-w-[1920px] w-full mx-auto px-[24px] relative z-10 flex flex-col items-center">
+        
+        <!-- SECTION TITLE -->
+        <h2 class="text-[#10e608] text-center mb-24 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+            Vamos conversar ?
+        </h2>
+
+        <!-- CONTACT GRID -->
+        <!-- max-w-xl no mobile alinha o bloco à esquerda de forma consistente, e md:max-w-6xl centraliza no desktop -->
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-center gap-8 md:gap-16 w-full max-w-xl md:max-w-6xl mx-auto">
+            
+            <!-- EMAIL -->
+            <a href="mailto:Glassdigitalbr@gmail.com" class="flex items-center gap-6 group cursor-pointer w-full md:w-auto">
+                <div class="w-16 h-16 flex-shrink-0">
+                    <img src="images/mail100.webp" alt="Email" class="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" loading="lazy">
+                </div>
+                <p class="text-[#eeeeee] group-hover:text-[#10e608] transition-colors duration-300" style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 400;">
+                    Glassdigitalbr@gmail.com
+                </p>
+            </a>
+
+            <!-- WHATSAPP (Com link direto para o WhatsApp e o emoji correto) -->
+            <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa.%20%F0%9F%98%84" target="_blank" rel="noopener noreferrer" class="flex items-center gap-6 group cursor-pointer w-full md:w-auto">
+                <div class="w-16 h-16 flex-shrink-0">
+                    <img src="images/whats100.webp" alt="WhatsApp" class="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" loading="lazy">
+                </div>
+                <p class="text-[#eeeeee] group-hover:text-[#10e608] transition-colors duration-300" style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 400;">
+                    +55 (43) 9 9956-0109
+                </p>
+            </a>
+
+            <!-- LOCALIZAÇÃO -->
+            <div class="flex items-center gap-6 group w-full md:w-auto">
+                <div class="w-16 h-16 flex-shrink-0">
+                    <img src="images/location100.webp" alt="Localização" class="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" loading="lazy">
+                </div>
+                <p class="text-[#eeeeee] transition-colors duration-300" style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 400;">
+                    Brasil, Londrina-PR
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+    </main>
+<!-- FOOTER -->
+    <footer class="w-full bg-[#1a1a1a] py-12 relative overflow-hidden text-gray-300">
+        
+        <!-- Contêiner principal com min-h para garantir espaço para a logo no desktop -->
+        <div class="max-w-[1920px] w-full mx-auto px-[20px] relative z-10 flex flex-col items-center justify-center min-h-[100px]">
+
+            <!-- SEÇÃO DA LOGO -->
+            <!-- md:absolute garante que a logo fique na esquerda sem atrapalhar a centralização do texto -->
+            <div class="mb-10 md:mb-0 md:absolute md:left-[20px] md:top-1/2 md:-translate-y-1/2 flex flex-col items-center">
+                <a href="/" class="flex flex-col items-center">
+                    <img src="images/logoheader100.webp" alt="Glass Digital Logo Colorida" class="w-auto h-24">
+                </a>
+            </div>
+
+            <!-- SEÇÃO DE LINKS E COPYRIGHT (Centralizada) -->
+            <div class="flex flex-col items-center text-center">
+                
+                <!-- Links (Linha de Cima) -->
+                <!-- gap-[64px] para o espaçamento exato solicitado -->
+                <div class="flex flex-row items-center justify-center gap-[64px]" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400;">
+                    <a href="politicas.html" class="hover:text-[#10e608] transition-colors duration-300">
+                        Politica de Privacidade
+                    </a>
+                    <a href="termos.html" class="hover:text-[#10e608] transition-colors duration-300">
+                        Termos de uso
+                    </a>
+                </div>
+
+                <!-- Texto de Copyright (Linha de Baixo) -->
+                <!-- mt-6 dá um respiro agradável entre os links e o texto de baixo -->
+                <p class="mt-6 text-[#474747]" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400;">
+                    2026 - Glass Digital - Todos os direitos reservados
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+
+
+</body>
+</html>
