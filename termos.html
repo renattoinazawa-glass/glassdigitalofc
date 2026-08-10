@@ -10,19 +10,19 @@
     
     <title>Glass Digital</title>
 
-    <!-- Favicon da Aba -->
+    <!-- Favicon -->
     <link rel="icon" href="images/favicon.png" type="image/png" sizes="32x32">
 
-    <!-- Importação do Tailwind CSS via CDN -->
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Link do arquivo CSS local -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Estilo temporário apenas para testarmos o efeito de vidro do Header -->
+   
     <style>
         body {
-            /* Imagem de fundo para você ver o efeito borrado do header funcionando */
+            
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -37,18 +37,18 @@
 
 <body class="bg-[#101010]">
 
-<!-- HEADER: Termos de Uso -->
+<!-- HEADER -->
 <header id="header-termos" class="w-full bg-black/70 backdrop-blur-sm px-4 py-2 md:px-8 md:py-4 flex items-center border-b border-gray-700 fixed top-0 z-50 transition-transform duration-300">
         
-        <!-- Contêiner do Logo à esquerda -->
+        
         <div class="flex items-center gap-x-2 flex-shrink-0">
             <a href="/" class="flex flex-col items-center">
-                <!-- Imagem idêntica à da Home: h-[64px] para celular e md:h-[80px] para desktop -->
+               
                 <img src="images/logoheader100.webp" alt="Glass Digital Logo" style="height: 64px;" class="md:h-[80px] w-auto object-contain" loading="eager">
             </a>
         </div>
  
-        <!-- Navegação principal -->
+        <!-- Main nav -->
         <nav class="flex-grow flex justify-end md:pr-8">
             <ul class="flex gap-x-6 md:gap-x-10 text-white font-medium text-sm md:text-base" style="font-family: 'Montserrat', sans-serif;">
                 <li>
@@ -62,7 +62,7 @@
         
     </header>
 
-    <!-- SCRIPT DE CONTROLE DO SCROLL -->
+    <!-- Header behavior script -->
     <script>
         let lastScrollTopTermos = 0;
         const headerTermos = document.getElementById("header-termos");
@@ -82,10 +82,10 @@
 
     
 
-    <!-- CONTEÚDO DA POLÍTICA -->
-    <!-- pt-32 dá o espaço necessário para o header fixed não cobrir o texto -->
+    <!-- Policy -->
+   
     <main class="w-full pt-32 pb-24 px-6 md:px-12">
-        <!-- max-w-4xl mx-auto cria o bloco centralizado. text-left garante o alinhamento do texto -->
+        
         <div class="max-w-4xl items mx-auto text-left text-[#EEEEEE]" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 400; line-height: 1.6;">
             
             <h1 class="font-bold mb-8 text-[#00dd00]">Termos de uso</h1>
@@ -151,19 +151,19 @@ Para dúvidas sobre estes Termos de Uso, o usuário poderá entrar em contato pe
         </div>
     </main>
 
-<!-- FOOTER (Para termos.html) -->
+<!-- FOOTER  -->
     <footer class="w-full bg-[#1a1a1a] py-12 relative overflow-hidden text-gray-300">
         
         <div class="max-w-[1920px] w-full mx-auto px-[20px] relative z-10 flex flex-col items-center justify-center min-h-[100px]">
 
-            <!-- SEÇÃO DA LOGO -->
+            
             <div class="mb-10 md:mb-0 md:absolute md:left-[20px] md:top-1/2 md:-translate-y-1/2 flex flex-col items-center">
                 <a href="/" class="flex flex-col items-center">
                     <img src="images/logocolorv.png" alt="Glass Digital Logo Colorida" class="w-auto h-24">
                 </a>
             </div>
 
-            <!-- SEÇÃO DE LINKS E COPYRIGHT -->
+            
             <div class="flex flex-col items-center text-center">
                 
                 <!-- Links (Home | Políticas) -->
@@ -172,13 +172,13 @@ Para dúvidas sobre estes Termos de Uso, o usuário poderá entrar em contato pe
                     <a href="/" class="hover:text-[#10e608] transition-colors duration-300">
                         Home
                     </a>
-                    <!-- Aponta para as políticas -->
+                    <!-- Policy -->
                     <a href="politicas.html" class="hover:text-[#10e608] transition-colors duration-300">
                         Política de Privacidade
                     </a>
                 </div>
 
-                <!-- Texto de Copyright -->
+                <!-- Copyright -->
                 <p class="mt-6 text-[#474747]" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400;">
                     2026 - Glass Digital - Todos os direitos reservados
                 </p>
