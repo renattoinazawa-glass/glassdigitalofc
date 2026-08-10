@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /politicas
+Disallow: /termos
+
+Sitemap: https://glassdigital.com.br/sitemap.xml
