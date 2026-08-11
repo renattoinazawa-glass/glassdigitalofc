@@ -47,36 +47,42 @@
 </head>
 
 <body class="antialiased font-sans text-white overflow-x-hidden bg-[#0A0A0A]">
-   <!-- Header behavior -->
+   <!-- Header -->
 <header id="header" class="w-full bg-black/70 backdrop-blur-sm px-4 py-2 md:px-8 md:py-4 flex items-center border-b border-gray-700 fixed top-0 z-50 transition-transform duration-300">
         
-        <!-- Left logo -->
-        <div class="flex items-center gap-x-2 flex-shrink-0">
-            <a href="/" class="flex flex-col items-center">
-                
-                <img src="images/logoheader100.webp" alt="Glass Digital Logo" style="height: 64px;" class="md:h-[80px] w-auto object-contain" loading="eager">
-            </a>
-        </div>
- 
-        <!-- Main nav -->
-        <nav class="flex-grow flex justify-end md:pr-8">
-            <ul class="flex gap-x-6 md:gap-x-10 text-white font-medium text-sm md:text-base" style="font-family: 'Montserrat', sans-serif;">
-                <li>
-                    <a href="politicas.html" class="hover:text-[#00dd00] transition-colors duration-200">Politicas</a>
-                </li>
-                <li>
-                    <a href="termos.html" class="hover:text-[#00dd00] transition-colors duration-200">Termos de uso</a>
-                </li>
-                <li>
-                    <a href="#sobrenos" class="hover:text-[#00dd00] transition-colors duration-200">Sobre nós</a>
-                </li>
-                <li>
-                    <a href="#contato" class="hover:text-[#00dd00]] transition-colors duration-200">Contato</a>
-                </li>
-            </ul>
-        </nav>
-        
-    </header>
+    <!-- Left logo -->
+    <div class="flex items-center gap-x-2 flex-shrink-0">
+        <a href="/" class="flex flex-col items-center">
+            <img src="images/logoheader100.webp" alt="Glass Digital Logo" style="height: 64px;" class="md:h-[80px] w-auto object-contain" loading="eager">
+        </a>
+    </div>
+
+    <!-- Main nav -->
+    <nav class="flex-grow flex justify-end md:pr-8">
+        <ul class="flex gap-x-6 md:gap-x-10 text-white font-medium text-sm md:text-base" style="font-family: 'Montserrat', sans-serif;">
+            
+            <!-- Adicionado: hidden md:block -->
+            <li class="hidden md:block">
+                <a href="politicas.html" class="hover:text-[#00dd00] transition-colors duration-200">Politicas</a>
+            </li>
+            
+            <!-- Adicionado: hidden md:block -->
+            <li class="hidden md:block">
+                <a href="termos.html" class="hover:text-[#00dd00] transition-colors duration-200">Termos de uso</a>
+            </li>
+            
+            <!-- Estes continuam visíveis em todas as telas -->
+            <li>
+                <a href="#sobrenos" class="hover:text-[#00dd00] transition-colors duration-200">Sobre nós</a>
+            </li>
+            <li>
+                <a href="#contato" class="hover:text-[#00dd00] transition-colors duration-200">Contato</a>
+            </li>
+            
+        </ul>
+    </nav>
+    
+</header>
 <main>
     <!-- Header Scroll script -->
     <script>
