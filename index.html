@@ -137,7 +137,7 @@
 <script>
 document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("cookie-modal"),t=localStorage.getItem("glassDigitalCookieConsent");t?"accepted"===t&&n():e.classList.remove("hidden")}));function acceptCookies(){localStorage.setItem("glassDigitalCookieConsent","accepted"),document.getElementById("cookie-modal").classList.add("hidden"),n()}function denyCookies(){localStorage.setItem("glassDigitalCookieConsent","denied"),document.getElementById("cookie-modal").classList.add("hidden")}function n(){const e="[cole o id do google aqui]",t=document.createElement("script");t.async=!0,t.src=`https://www.googletagmanager.com/gtag/js?id=${e}`,document.head.appendChild(t);const o=document.createElement("script");o.innerHTML=`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${e}');`,document.head.appendChild(o);const c="[cole o id do pixel da meta aqui]",d=document.createElement("script");d.innerHTML=`!function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '${c}'); fbq('track', 'PageView');`,document.head.appendChild(d)}
 </script>
-<!--Hero banner / Section 1-->
+<!--Hero banner / Section 0 -->
    <section class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-black pt-24 md:pt-0">
         
         <div class="absolute inset-0 w-full h-full bg-[url('images/herobanner.webp')] bg-cover bg-no-repeat bg-center md:bg-right z-0"></div>
@@ -168,6 +168,39 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
 </div>
     </section>
 
+    <!-- Section 1 -->
+<section class="w-full bg-[#0a0a0a] py-8 relative z-30 border-y border-[#eeeeee]/10">
+   
+    <div class="max-w-5xl w-full mx-auto px-[20px]">
+        
+        <!-- Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-[24px] items-center">
+            
+            <!-- 5 columns -->
+            <div class="md:col-span-5 text-center md:text-left">
+                <!-- Adicionado md:whitespace-nowrap para forçar o texto a ficar em 1 linha no PC -->
+                <h2 class="text-[#00dd00] leading-tight text-[24px] md:text-[24px] md:whitespace-nowrap" style="font-family: 'Orbitron', sans-serif; font-weight: 700;">
+                    Quem já confia em nós:
+                </h2>
+            </div>
+
+            <!-- LOGOS -->
+            <div class="md:col-span-6 md:col-start-7 flex justify-center md:justify-start items-center gap-8 md:gap-40">
+                
+                <!-- LOGO 1  -->
+                
+                <img src="images/jacarandalogo.webp" alt="Jacarandá Mobília" class="h-12 md:h-14 w-auto object-contain opacity-50 hover:opacity-100 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all duration-300" loading="lazy">
+                
+                <!-- LOGO 2 -->
+             
+                <img src="images/linklonlogo.webp" alt="Link Lon" class="h-12 md:h-14 w-auto object-contain opacity-50 hover:opacity-100 hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)] transition-all duration-300" loading="lazy">
+                
+            </div>
+
+        </div>
+
+    </div>
+</section>
     
    <!-- SECTION 2 -->
     <section class="w-full bg-transparent py-20 relative z-30">
@@ -179,7 +212,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                 
                 <!-- TÍTULO: 5 Colunas -->
                 <div class="md:col-span-5">
-                    <h2 class="text-[#00dd00] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+                    <h2 class="text-[#00dd00] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 24px; font-weight: 700;">
                         Te entendemos
                     </h2>
                 </div>
@@ -205,12 +238,12 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
     <div class="max-w-[1920px] w-full mx-auto px-[20px] flex flex-col items-center relative z-10">
         
         <!-- SECTION TITLE -->
-        <h2 class="text-[#00dd00] text-center mb-6 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+        <h2 class="text-[#00dd00] text-center mb-6 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 700;">
             O formato ideal para a sua nova <strong>fachada digital</strong>.
         </h2>
 
         <!-- SECTION SUBTITLE -->
-        <p class="text-white text-center mb-10 max-w-3xl" style="font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 400;">
+        <p class="text-white text-center mb-10 max-w-3xl" style="font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 400;">
             Criamos sites rápidos e desenhados para transmitir credibilidade e gerar vendas.
         </p>
 
@@ -284,7 +317,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
     <div class="max-w-[1920px] w-full mx-auto px-[24px] flex flex-col items-center relative z-10">
 
         <!-- SECTION TITLE -->
-        <h2 class="text-[#00dd00] text-center mb-[64px] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+        <h2 class="text-[#00dd00] text-center mb-[64px] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 700;">
             E por que a Glass Digital ?
         </h2>
 
@@ -369,9 +402,9 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
             <!-- Vertical alignment -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-[24px] items-center">
                 
-                <!-- TÍTULO: 5 Colunas -->
+                <!-- 5 Column title -->
                 <div class="md:col-span-5">
-                    <h2 class="text-[#00dd00] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+                    <h2 class="text-[#00dd00] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 700;">
                         Quem somos ?
                     </h2>
                 </div>
@@ -410,7 +443,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
     <div class="max-w-4xl mx-auto px-[24px] relative z-10">
         
         <!-- SECTION TITLE -->
-        <h2 class="text-[#00dd00] text-center mb-16 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+        <h2 class="text-[#00dd00] text-center mb-16 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 700;">
             Duvidas frequentes
         </h2>
 
