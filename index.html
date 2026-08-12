@@ -138,35 +138,36 @@
 document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("cookie-modal"),t=localStorage.getItem("glassDigitalCookieConsent");t?"accepted"===t&&n():e.classList.remove("hidden")}));function acceptCookies(){localStorage.setItem("glassDigitalCookieConsent","accepted"),document.getElementById("cookie-modal").classList.add("hidden"),n()}function denyCookies(){localStorage.setItem("glassDigitalCookieConsent","denied"),document.getElementById("cookie-modal").classList.add("hidden")}function n(){const e="[cole o id do google aqui]",t=document.createElement("script");t.async=!0,t.src=`https://www.googletagmanager.com/gtag/js?id=${e}`,document.head.appendChild(t);const o=document.createElement("script");o.innerHTML=`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${e}');`,document.head.appendChild(o);const c="[cole o id do pixel da meta aqui]",d=document.createElement("script");d.innerHTML=`!function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '${c}'); fbq('track', 'PageView');`,document.head.appendChild(d)}
 </script>
 <!--Hero banner / Section 0 -->
-   <section class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-black pt-24 md:pt-0">
+   
+<section class="relative w-full min-h-[85vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden bg-black pt-24 md:pt-0">
         
-        <div class="absolute inset-0 w-full h-full bg-[url('images/herobanner.webp')] bg-cover bg-no-repeat bg-center md:bg-right z-0"></div>
-        
-        <div class="absolute inset-0 bg-black/70 opacity-80 md:bg-gradient-to-r md:from-black md:via-black/90 md:to-transparent z-10"></div>
+    <div class="absolute inset-0 w-full h-full bg-[url('images/herobanner.webp')] bg-cover bg-no-repeat bg-center md:bg-right z-0"></div>
+    
+    <div class="absolute inset-0 bg-black/70 opacity-80 md:bg-gradient-to-r md:from-black md:via-black/90 md:to-transparent z-10"></div>
 
-        <div class="absolute inset-0 z-20 opacity-15 bg-[linear-gradient(to_right,#eeeeee_1px,transparent_1px),linear-gradient(to_bottom,#eeeeee_1px,transparent_1px)] bg-[size:65px_65px]"></div>
+    <div class="absolute inset-0 z-20 opacity-15 bg-[linear-gradient(to_right,#eeeeee_1px,transparent_1px),linear-gradient(to_bottom,#eeeeee_1px,transparent_1px)] bg-[size:65px_65px]"></div>
 
     <div class="relative z-30 flex flex-col items-center text-center px-[20px] max-w-5xl mx-auto animate-float">
             
-    <!-- SECTION TITLE -->
-    <h1 class="text-white mb-6 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
-        Você investe tanto na sua fachada <br class="hidden md:block">
-        fisica, mas e na sua <span class="text-[#00dd00]">digital</span> ?
-    </h1>
+        <!-- SECTION TITLE -->
+        <h1 class="text-white mb-6 leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 32px; font-weight: 700;">
+            Você investe tanto na sua fachada <br class="hidden md:block">
+            fisica, mas e na sua <span class="text-[#00dd00]">digital</span> ?
+        </h1>
 
-    <!-- SUBTITLE -->
-    <p class="text-white mb-12 max-w-2xl text-[14px] md:text-[16px]" style="font-family: 'Montserrat', sans-serif; font-weight: 400;">
-        A internet é a rua mais movimentada do mundo
-    </p>
+        <!-- SUBTITLE -->
+        <p class="text-white mb-12 max-w-2xl text-[14px] md:text-[16px]" style="font-family: 'Montserrat', sans-serif; font-weight: 400;">
+            A internet é a rua mais movimentada do mundo
+        </p>
 
-    <!-- BUTTON -->
-    <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
-        Quero meu website
-        <span class="group-hover:translate-x-1 transition-transform">→</span>
-    </a>
+        <!-- BUTTON -->
+        <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+            Quero meu website
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
 
-</div>
-    </section>
+    </div>
+</section>
 
     <!-- Section 1 -->
 <section class="w-full bg-[#0a0a0a] py-8 relative z-30 border-y border-[#eeeeee]/10">
