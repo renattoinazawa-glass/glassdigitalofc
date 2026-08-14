@@ -106,36 +106,65 @@
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Evita valores negativos no topo
         }, false);
     </script>
-    <div id="cookie-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md hidden">
+    <!-- OVERLAY and BANNER COOKIES LGPD -->
+<div id="cookie-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md hidden">
+    
+    <!-- Banner Container -->
+    <div class="bg-[#1a1a1a] w-full max-w-md p-6 md:p-8 mx-4 rounded-[5px] shadow-[0_0_40px_rgba(0,0,0,0.8)] flex flex-col" style="font-family: 'Montserrat', sans-serif;">
         
-        <!-- Banner  -->
-        <div class="bg-[#1a1a1a] w-full max-w-md p-8 mx-4 rounded-[5px] shadow-[0_0_40px_rgba(0,0,0,0.8)] flex flex-col text-center" style="font-family: 'Montserrat', sans-serif;">
-            
+        <!-- SINGLE VIEW BANNER -->
+        <div class="flex flex-col text-center">
             <h3 class="text-white text-xl font-bold mb-4">Sua privacidade importa</h3>
             
-            <!-- LGPD Text-->
-            <p class="text-gray-300 text-sm md:text-base mb-8 leading-relaxed font-normal">
-                Utilizamos cookies essenciais e tecnologias de parceiros (como Google e Meta) para analisar nosso tráfego, personalizar conteúdo e exibir anúncios relevantes. Ao clicar em "Aceitar", você concorda com o uso dessas tecnologias, conforme nossa <a href="politicas.html" class="text-[#00dd00] hover:underline">Política de Privacidade</a> e <a href="termos.html" class="text-[#00dd00] hover:underline">Termos de Uso</a>.
+            <p class="text-gray-300 text-sm mb-6 leading-relaxed font-normal text-left">
+                Utilizamos cookies essenciais e tecnologias de parceiros para analisar nosso tráfego e exibir anúncios relevantes. Ao clicar em "Aceitar selecionados" ou "Aceitar todos", você concorda com o uso dessas tecnologias, conforme nossa <a href="politicas.html" class="text-[#00dd00] hover:underline">Política de Privacidade</a>.
             </p>
-
             
-            <div class="flex flex-col sm:flex-row gap-4 justify-center font-semibold">
-             
-                <button onclick="denyCookies()" class="w-full sm:w-auto px-8 py-3 bg-[#f43f5e] text-white rounded-[5px] hover:bg-[#e11d48] transition-colors duration-300">
-                    Negar
-                </button>
+            <!-- CHECKBOXES -->
+            <div class="flex flex-col gap-4 mb-6 text-sm text-left bg-black/40 p-4 rounded-[5px]">
                 
-                <button onclick="acceptCookies()" class="w-full sm:w-auto px-8 py-3 bg-[#00dd00] text-black rounded-[5px] hover:bg-[#00ff00] transition-colors duration-300 shadow-[0_0_15px_rgba(0,221,0,0.2)] hover:shadow-[0_0_20px_rgba(0,221,0,0.5)]">
-                    Aceitar
-                </button>
+                <!-- Essential -->
+                <label class="flex items-start gap-3 cursor-not-allowed opacity-70">
+                    <input type="checkbox" checked disabled class="mt-1 accent-[#00dd00] w-5 h-5 flex-shrink-0">
+                    <div>
+                        <span class="block text-white font-semibold">Essenciais (Obrigatórios)</span>
+                        <span class="text-gray-400 text-xs">Necessários para o site funcionar.</span>
+                    </div>
+                </label>
+                
+                <!-- Analytics (Unchecked by default) -->
+                <label class="flex items-start gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                    <input type="checkbox" id="chk-analytics" class="mt-1 accent-[#00dd00] w-5 h-5 flex-shrink-0">
+                    <div>
+                        <span class="block text-white font-semibold">Análise e Desempenho</span>
+                        <span class="text-gray-400 text-xs">Ajudam a entender como você interage conosco e como podemos melhorar.</span>
+                    </div>
+                </label>
+
+                <!-- Marketing (Unchecked by default) -->
+                <label class="flex items-start gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                    <input type="checkbox" id="chk-marketing" class="mt-1 accent-[#00dd00] w-5 h-5 flex-shrink-0">
+                    <div>
+                        <span class="block text-white font-semibold">Marketing e Publicidade</span>
+                        <span class="text-gray-400 text-xs">Permitem que nós mostremos conteúdos que combinam com você, diminuindo mensagens irrelevantes.</span>
+                    </div>
+                </label>
             </div>
             
+            <!-- BUTTONS -->
+            <div class="flex flex-col gap-3 font-semibold">
+                <!-- Dynamic Accept Button (Text changes based on checkboxes) -->
+                <button id="btn-dynamic-accept" onclick="savePreferences()" class="w-full px-8 py-3 bg-[#00dd00] text-black rounded-[5px] hover:bg-[#00ff00] transition-colors duration-300 shadow-[0_0_15px_rgba(0,221,0,0.2)] hover:shadow-[0_0_20px_rgba(0,221,0,0.5)]">
+                    Aceitar Selecionados
+                </button>
+            </div>
         </div>
-    </div>
 
-<!-- OVERLAY and BANNER COOKIES LGPD -->
+    </div>
+</div>
+
 <script>
-document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("cookie-modal"),t=localStorage.getItem("glassDigitalCookieConsent");t?"accepted"===t&&n():e.classList.remove("hidden")}));function acceptCookies(){localStorage.setItem("glassDigitalCookieConsent","accepted"),document.getElementById("cookie-modal").classList.add("hidden"),n()}function denyCookies(){localStorage.setItem("glassDigitalCookieConsent","denied"),document.getElementById("cookie-modal").classList.add("hidden")}function n(){const e="[cole o id do google aqui]",t=document.createElement("script");t.async=!0,t.src=`https://www.googletagmanager.com/gtag/js?id=${e}`,document.head.appendChild(t);const o=document.createElement("script");o.innerHTML=`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${e}');`,document.head.appendChild(o);const c="[cole o id do pixel da meta aqui]",d=document.createElement("script");d.innerHTML=`!function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '${c}'); fbq('track', 'PageView');`,document.head.appendChild(d)}
+document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("cookie-modal"),t=localStorage.getItem("glassDigitalCookieConsent");if(t){const e=JSON.parse(t);injectScripts(e.analytics,e.marketing)}else e.classList.remove("hidden");const n=document.getElementById("btn-dynamic-accept"),c=document.getElementById("chk-analytics"),t_chk=document.getElementById("chk-marketing");function updateBtn(){c.checked&&t_chk.checked?n.innerText="Aceitar Todos":n.innerText="Aceitar Selecionados"}c&&t_chk&&(c.addEventListener("change",updateBtn),t_chk.addEventListener("change",updateBtn))}));function hideModal(){document.getElementById("cookie-modal").classList.add("hidden")}function savePreferences(){const e=document.getElementById("chk-analytics").checked,t=document.getElementById("chk-marketing").checked,n={essential:!0,analytics:e,marketing:t};localStorage.setItem("glassDigitalCookieConsent",JSON.stringify(n)),hideModal(),injectScripts(e,t)}function injectScripts(e,t){if(e){const e="[cole o id do google aqui]",t=document.createElement("script");t.async=!0,t.src=`https://www.googletagmanager.com/gtag/js?id=${e}`,document.head.appendChild(t);const n=document.createElement("script");n.innerHTML=`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${e}');`,document.head.appendChild(n)}if(t){const e="[cole o id do pixel da meta aqui]",t=document.createElement("script");t.innerHTML=`!function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '${e}'); fbq('track', 'PageView');`,document.head.appendChild(t)}}
 </script>
 <!--Hero banner / Section 0 -->
    
