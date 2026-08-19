@@ -17,6 +17,13 @@
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+<meta property="og:title" content="Glass Digital | Criação de Websites">
+<meta property="og:description" content="Transforme a presença digital da sua empresa com sites de alta conversão.">
+<meta property="og:image" content="https://www.glassdigital.com.br/images/logolink.png">
+<meta property="og:url" content="https://www.glassdigital.com.br/">
+<meta property="og:type" content="website">
+
+
     <!-- CSS Link archive -->
     <link rel="stylesheet" href="styles.css">
 
@@ -130,6 +137,15 @@
                         <span class="block text-white font-semibold">Essenciais (Obrigatórios)</span>
                         <span class="text-gray-400 text-xs">Necessários para o site funcionar.</span>
                     </div>
+
+                </label>
+                <!-- Marketing (Unchecked by default) -->
+                <label class="flex items-start gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                    <input type="checkbox" id="chk-marketing" class="mt-1 accent-[#00dd00] w-5 h-5 flex-shrink-0">
+                    <div>
+                        <span class="block text-white font-semibold">Marketing e Publicidade</span>
+                        <span class="text-gray-400 text-xs">Permitem que nossos parceiros (como Google e Meta) mostrem conteúdos que combinam com você, diminuindo mensagens irrelevantes.</span>
+                    </div>
                 </label>
                 
                 <!-- Analytics (Unchecked by default) -->
@@ -141,20 +157,13 @@
                     </div>
                 </label>
 
-                <!-- Marketing (Unchecked by default) -->
-                <label class="flex items-start gap-3 cursor-pointer hover:opacity-80 transition-opacity">
-                    <input type="checkbox" id="chk-marketing" class="mt-1 accent-[#00dd00] w-5 h-5 flex-shrink-0">
-                    <div>
-                        <span class="block text-white font-semibold">Marketing e Publicidade</span>
-                        <span class="text-gray-400 text-xs">Permitem que nossos parceiros (como Google e Meta) mostrem conteúdos que combinam com você , diminuindo mensagens irrelevantes.</span>
-                    </div>
-                </label>
+                
             </div>
             
             <!-- BUTTONS -->
             <div class="flex flex-col gap-3 font-semibold">
-                <!-- Dynamic Accept Button (Text changes based on checkboxes) -->
-                <button id="btn-dynamic-accept" onclick="savePreferences()" class="w-full px-8 py-3 bg-[#00dd00] text-black rounded-[5px] hover:bg-[#00ff00] transition-colors duration-300 shadow-[0_0_15px_rgba(0,221,0,0.2)] hover:shadow-[0_0_20px_rgba(0,221,0,0.5)]">
+                <!-- Dynamic Accept Button  -->
+                <button id="btn-dynamic-accept" onclick="savePreferences()" class="w-full px-8 py-3 rounded-[5px] transition-all duration-300 bg-[#333333] text-gray-200 hover:bg-[#444444] shadow-none">
                     Aceitar Selecionados
                 </button>
             </div>
@@ -164,7 +173,7 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("cookie-modal"),t=localStorage.getItem("glassDigitalCookieConsent");if(t){const e=JSON.parse(t);injectScripts(e.analytics,e.marketing)}else e.classList.remove("hidden");const n=document.getElementById("btn-dynamic-accept"),c=document.getElementById("chk-analytics"),t_chk=document.getElementById("chk-marketing");function updateBtn(){c.checked&&t_chk.checked?n.innerText="Aceitar Todos":n.innerText="Aceitar Selecionados"}c&&t_chk&&(c.addEventListener("change",updateBtn),t_chk.addEventListener("change",updateBtn))}));function hideModal(){document.getElementById("cookie-modal").classList.add("hidden")}function savePreferences(){const e=document.getElementById("chk-analytics").checked,t=document.getElementById("chk-marketing").checked,n={essential:!0,analytics:e,marketing:t};localStorage.setItem("glassDigitalCookieConsent",JSON.stringify(n)),hideModal(),injectScripts(e,t)}function injectScripts(e,t){if(e){const e="[cole o id do google aqui]",t=document.createElement("script");t.async=!0,t.src=`https://www.googletagmanager.com/gtag/js?id=${e}`,document.head.appendChild(t);const n=document.createElement("script");n.innerHTML=`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${e}');`,document.head.appendChild(n)}if(t){const e="1771063460584723",t=document.createElement("script");t.innerHTML=`!function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '${e}'); fbq('track', 'PageView');`,document.head.appendChild(t)}}
+document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("cookie-modal"),t=localStorage.getItem("glassDigitalCookieConsent");if(t){const e=JSON.parse(t);injectScripts(e.analytics,e.marketing)}else e.classList.remove("hidden");const n=document.getElementById("btn-dynamic-accept"),c=document.getElementById("chk-analytics"),o=document.getElementById("chk-marketing");function a(){c.checked&&o.checked?(n.innerText="Aceitar Todos",n.className="w-full px-8 py-3 rounded-[5px] transition-all duration-300 font-semibold bg-[#00dd00] text-black hover:bg-[#00ff00] shadow-[0_0_15px_rgba(0,221,0,0.2)] hover:shadow-[0_0_20px_rgba(0,221,0,0.5)]"):(n.innerText="Aceitar Selecionados",n.className="w-full px-8 py-3 rounded-[5px] transition-all duration-300 font-semibold bg-[#333333] text-gray-200 hover:bg-[#444444] shadow-none")}c&&o&&(c.addEventListener("change",a),o.addEventListener("change",a))}));function hideModal(){document.getElementById("cookie-modal").classList.add("hidden")}function savePreferences(){const e=document.getElementById("chk-analytics").checked,t=document.getElementById("chk-marketing").checked,n={essential:!0,analytics:e,marketing:t};localStorage.setItem("glassDigitalCookieConsent",JSON.stringify(n)),hideModal(),injectScripts(e,t)}function injectScripts(e,t){if(e){const e="[cole o id do google aqui]",t=document.createElement("script");t.async=!0,t.src=`https://www.googletagmanager.com/gtag/js?id=${e}`,document.head.appendChild(t);const n=document.createElement("script");n.innerHTML=`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date);gtag('config','${e}')`,document.head.appendChild(n)}if(t){const e="1771063460584723",t=document.createElement("script");t.innerHTML=`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${e}');fbq('track','PageView');`,document.head.appendChild(t)}}
 </script>
 <!--Hero banner / Section 0 -->
    
