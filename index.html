@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Orbitron e Montserrat Fonts download -->
+    <!-- Orbitron and Montserrat Fonts download -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
@@ -75,17 +75,17 @@
                 <a href="#contato" class="hover:text-[#00dd00] transition-colors duration-200">Contato</a>
             </li>
 
-            <!-- Adicionado: hidden md:block -->
+            
             <li class="hidden md:block">
                 <a href="politicas.html" class="hover:text-[#00dd00] transition-colors duration-200">Politicas</a>
             </li>
             
-            <!-- Adicionado: hidden md:block -->
+           
             <li class="hidden md:block">
                 <a href="termos.html" class="hover:text-[#00dd00] transition-colors duration-200">Termos de uso</a>
             </li>
             
-            <!-- Estes continuam visíveis em todas as telas -->
+            
            
             
         </ul>
@@ -116,15 +116,33 @@
     <!-- OVERLAY and BANNER COOKIES LGPD -->
 <div id="cookie-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-md hidden">
     
-    <!-- Banner Container -->
     <div class="bg-[#1a1a1a] w-full max-w-md p-6 md:p-8 mx-4 rounded-[5px] shadow-[0_0_40px_rgba(0,0,0,0.8)] flex flex-col" style="font-family: 'Montserrat', sans-serif;">
         
-        <!-- SINGLE VIEW BANNER -->
-        <div class="flex flex-col text-center">
+        <div id="view-initial" class="flex flex-col text-center">
             <h3 class="text-white text-xl font-bold mb-4">Sua privacidade importa</h3>
             
             <p class="text-gray-300 text-sm mb-6 leading-relaxed font-normal text-left">
-                Utilizamos cookies essenciais e tecnologias de parceiros para analisar nosso tráfego e exibir anúncios relevantes. Ao clicar em "Aceitar selecionados" ou "Aceitar todos", você concorda com o uso dessas tecnologias, conforme nossa <a href="politicas.html" class="text-[#00dd00] hover:underline">Política de Privacidade</a>.
+                Utilizamos cookies essenciais e tecnologias de parceiros para analisar nosso tráfego e exibir anúncios relevantes. Ao clicar em "Aceitar todos" ou "Aceitar essenciais", você concorda com o uso dessas tecnologias, conforme nossa <a href="politicas.html" class="text-[#00dd00] hover:underline">Política de Privacidade</a>.
+            </p>
+            
+            <!-- BUTTONS -->
+<div class="flex flex-col gap-3">
+    <button onclick="acceptAll()" class="w-full px-8 py-3 rounded-[5px] transition-all duration-300 bg-[#00dd00] text-black hover:bg-[#00ff00] shadow-[0_0_15px_rgba(0,221,0,0.2)] hover:shadow-[0_0_20px_rgba(0,221,0,0.5)] font-bold">
+        Aceitar Todos
+    </button>
+    <button onclick="acceptEssential()" class="w-full px-8 py-3 rounded-[5px] transition-all duration-300 border border-gray-400 text-gray-300 hover:bg-gray-800 hover:text-white shadow-none font-normal">
+        Aceitar Essenciais
+    </button>
+    <button onclick="showManageScreen()" class="w-full px-8 py-3 rounded-[5px] transition-all duration-300 text-gray-300 hover:bg-gray-800 hover:text-white shadow-none font-normal">
+        Gerenciar Cookies
+    </button>
+</div>
+        </div>
+
+        <div id="view-manage" class="hidden flex-col text-center">
+            <h3 class="text-white text-xl font-bold mb-4">Gerenciar Preferências</h3>
+            <p class="text-gray-300 text-sm mb-6 leading-relaxed font-normal text-left">
+                Escolha quais cookies você permite que utilizemos.
             </p>
             
             <!-- CHECKBOXES -->
@@ -137,9 +155,9 @@
                         <span class="block text-white font-semibold">Essenciais (Obrigatórios)</span>
                         <span class="text-gray-400 text-xs">Necessários para o site funcionar.</span>
                     </div>
-
                 </label>
-                <!-- Marketing (Unchecked by default) -->
+                
+                <!-- Marketing -->
                 <label class="flex items-start gap-3 cursor-pointer hover:opacity-80 transition-opacity">
                     <input type="checkbox" id="chk-marketing" class="mt-1 accent-[#00dd00] w-5 h-5 flex-shrink-0">
                     <div>
@@ -147,8 +165,8 @@
                         <span class="text-gray-400 text-xs">Permitem que nossos parceiros (como Google e Meta) mostrem conteúdos que combinam com você, diminuindo mensagens irrelevantes.</span>
                     </div>
                 </label>
-                
-                <!-- Analytics (Unchecked by default) -->
+
+                <!-- Analytics -->
                 <label class="flex items-start gap-3 cursor-pointer hover:opacity-80 transition-opacity">
                     <input type="checkbox" id="chk-analytics" class="mt-1 accent-[#00dd00] w-5 h-5 flex-shrink-0">
                     <div>
@@ -156,15 +174,13 @@
                         <span class="text-gray-400 text-xs">Ajudam a entender como você interage conosco e como podemos melhorar.</span>
                     </div>
                 </label>
-
-                
             </div>
             
             <!-- BUTTONS -->
             <div class="flex flex-col gap-3 font-semibold">
-                <!-- Dynamic Accept Button  -->
+                <!-- Dynamic Accept Button -->
                 <button id="btn-dynamic-accept" onclick="savePreferences()" class="w-full px-8 py-3 rounded-[5px] transition-all duration-300 bg-[#333333] text-gray-200 hover:bg-[#444444] shadow-none">
-                    Aceitar Selecionados
+                    Salvar Selecionados
                 </button>
             </div>
         </div>
@@ -173,7 +189,7 @@
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("cookie-modal"),t=localStorage.getItem("glassDigitalCookieConsent");if(t){const e=JSON.parse(t);injectScripts(e.analytics,e.marketing)}else e.classList.remove("hidden");const n=document.getElementById("btn-dynamic-accept"),c=document.getElementById("chk-analytics"),o=document.getElementById("chk-marketing");function a(){c.checked&&o.checked?(n.innerText="Aceitar Todos",n.className="w-full px-8 py-3 rounded-[5px] transition-all duration-300 font-semibold bg-[#00dd00] text-black hover:bg-[#00ff00] shadow-[0_0_15px_rgba(0,221,0,0.2)] hover:shadow-[0_0_20px_rgba(0,221,0,0.5)]"):(n.innerText="Aceitar Selecionados",n.className="w-full px-8 py-3 rounded-[5px] transition-all duration-300 font-semibold bg-[#333333] text-gray-200 hover:bg-[#444444] shadow-none")}c&&o&&(c.addEventListener("change",a),o.addEventListener("change",a))}));function hideModal(){document.getElementById("cookie-modal").classList.add("hidden")}function savePreferences(){const e=document.getElementById("chk-analytics").checked,t=document.getElementById("chk-marketing").checked,n={essential:!0,analytics:e,marketing:t};localStorage.setItem("glassDigitalCookieConsent",JSON.stringify(n)),hideModal(),injectScripts(e,t)}function injectScripts(e,t){if(e){const e="[cole o id do google aqui]",t=document.createElement("script");t.async=!0,t.src=`https://www.googletagmanager.com/gtag/js?id=${e}`,document.head.appendChild(t);const n=document.createElement("script");n.innerHTML=`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date);gtag('config','${e}')`,document.head.appendChild(n)}if(t){const e="1771063460584723",t=document.createElement("script");t.innerHTML=`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${e}');fbq('track','PageView');`,document.head.appendChild(t)}}
+document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementById("cookie-modal"),t=localStorage.getItem("glassDigitalCookieConsent");if(t){const e=JSON.parse(t);injectScripts(e.analytics,e.marketing)}else e.classList.remove("hidden");const n=document.getElementById("btn-dynamic-accept"),c=document.getElementById("chk-analytics"),t_chk=document.getElementById("chk-marketing");function updateBtn(){c.checked&&t_chk.checked?(n.innerText="Aceitar Todos",n.className="w-full px-8 py-3 rounded-[5px] transition-all duration-300 font-semibold bg-[#00dd00] text-black hover:bg-[#00ff00] shadow-[0_0_15px_rgba(0,221,0,0.2)] hover:shadow-[0_0_20px_rgba(0,221,0,0.5)]"):(n.innerText="Salvar Selecionados",n.className="w-full px-8 py-3 rounded-[5px] transition-all duration-300 font-semibold bg-[#333333] text-gray-200 hover:bg-[#444444] shadow-none")}c&&t_chk&&(c.addEventListener("change",updateBtn),t_chk.addEventListener("change",updateBtn))}));function hideModal(){document.getElementById("cookie-modal").classList.add("hidden")}function showManageScreen(){document.getElementById("view-initial").classList.add("hidden"),document.getElementById("view-manage").classList.remove("hidden"),document.getElementById("view-manage").classList.add("flex")}function acceptAll(){const e={essential:!0,analytics:!0,marketing:!0};localStorage.setItem("glassDigitalCookieConsent",JSON.stringify(e)),hideModal(),injectScripts(!0,!0)}function acceptEssential(){const e={essential:!0,analytics:!1,marketing:!1};localStorage.setItem("glassDigitalCookieConsent",JSON.stringify(e)),hideModal(),injectScripts(!1,!1)}function savePreferences(){const e=document.getElementById("chk-analytics").checked,t=document.getElementById("chk-marketing").checked,n={essential:!0,analytics:e,marketing:t};localStorage.setItem("glassDigitalCookieConsent",JSON.stringify(n)),hideModal(),injectScripts(e,t)}function injectScripts(e,t){if(e){const e="[cole o id do google aqui]",t=document.createElement("script");t.async=!0,t.src=`https://www.googletagmanager.com/gtag/js?id=${e}`,document.head.appendChild(t);const n=document.createElement("script");n.innerHTML=`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date);gtag('config','${e}')`,document.head.appendChild(n)}if(t){const e="1771063460584723",t=document.createElement("script");t.innerHTML=`!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${e}');fbq('track','PageView');`,document.head.appendChild(t)}}
 </script>
 <!--Hero banner / Section 0 -->
    
@@ -199,10 +215,10 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
         </p>
 
         <!-- BUTTON -->
-        <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
-            Quero meu website
-            <span class="group-hover:translate-x-1 transition-transform">→</span>
-        </a>
+      <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+    Quero meu website
+    <span class="group-hover:translate-x-1 transition-transform">→</span>
+</a>
 
     </div>
 </section>
@@ -246,7 +262,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
         <!-- Contêiner padronizado: max-w-5xl e px-[20px] -->
         <div class="max-w-5xl w-full mx-auto px-[20px]">
             
-            <!-- Alinhamento vertical centralizado (items-center) -->
+           
             <div class="grid grid-cols-1 md:grid-cols-12 gap-[24px] items-center">
                 
                 <!-- TÍTULO: 5 Colunas -->
@@ -344,10 +360,10 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
         </div>
 
         <!-- BUTTON -->
-        <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
-            Quero meu website
-            <span class="group-hover:translate-x-1 transition-transform">→</span>
-        </a>
+       <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+    Quero meu website
+    <span class="group-hover:translate-x-1 transition-transform">→</span>
+    </a>
 
     </div>
 </section>
@@ -364,7 +380,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[24px] w-full mb-[64px]">
 
             <!-- CARD 1: Tecnologia Vidro fumê -->
-            <!-- Alterado: h-auto md:h-[400px] e p-8 md:p-10 -->
+            
             <div class="rounded-[15px] p-8 md:p-10 flex flex-col h-auto md:h-[400px] border border-transparent" style="background: linear-gradient(#101010, #101010) padding-box, linear-gradient(to bottom right, #5504AF 0%, #6E1DA8 100%) border-box;">
                 <!-- icons -->
                 <div class="mb-8 h-10 w-10">
@@ -380,8 +396,8 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                 </p>
             </div>
 
-            <!-- CARD 2: SEO e performance -->
-            <!-- Alterado: h-auto md:h-[400px] e p-8 md:p-10 -->
+            <!-- CARD 2: SEO and performance -->
+            
             <div class="bg-[#101010] rounded-[15px] p-8 md:p-10 flex flex-col h-auto md:h-[400px] border border-[#eeeeee]">
                 <!-- Icon -->
                 <div class="mb-8 h-10 w-10">
@@ -397,8 +413,8 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                 </p>
             </div>
 
-            <!-- CARD 3: Design estratégico -->
-            <!-- Alterado: h-auto md:h-[400px] e p-8 md:p-10 -->
+            <!-- CARD 3: Strategic Design -->
+            
             <div class="bg-[#101010] rounded-[15px] p-8 md:p-10 flex flex-col h-auto md:h-[400px] border border-[#eeeeee]">
                 <!-- Icon -->
                 <div class="mb-8 h-10 w-10">
@@ -416,10 +432,9 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
 
         </div>
 
-        <!-- BUTTON -->
-        <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
-            Quero meu website
-            <span class="group-hover:translate-x-1 transition-transform">→</span>
+        <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+        Quero meu website
+        <span class="group-hover:translate-x-1 transition-transform">→</span>
         </a>
 
     </div>
@@ -448,12 +463,12 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                     </h2>
                 </div>
 
-                <!-- TEXTO -->
+                <!-- TEXT -->
                 <div class="md:col-span-6 md:col-start-7 relative">
                     
                    
 
-                    <!-- TEXTOS -->
+                    <!-- TEXTS -->
                     <div class="relative z-10 text-white space-y-4" style="font-family: 'Montserrat', sans-serif; font-weight: 400; line-height: 1.6;">
     <p>
         Diversos negócios investem pesado em suas fachadas, na arquitetura, no letreiro e na beleza do espaço para atrair as pessoas que passam na rua. Mas por que esses mesmos negócios ainda deixam passar clientes todos os dias por adiarem o <strong class="font-normal">investimento no digital</strong>?
@@ -476,7 +491,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
         </div>
     </section>
 
-    <!-- SECTION 6: FAQ (Dúvidas Frequentes) -->
+    <!-- SECTION 6: FAQ  -->
     <section class="w-full bg-[#0a0a0a] py-24 relative overflow-hidden">
     
     <div class="max-w-4xl mx-auto px-[24px] relative z-10">
@@ -491,7 +506,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
             
             <!-- ITEM 1 -->
             <div class="relative w-full border-b border-[#eeeeee]/20 group">
-                <!-- Checkbox invisível -->
+                <!-- Invisible Checkbox -->
                 <input type="checkbox" class="peer absolute top-0 inset-x-0 w-full h-[80px] opacity-0 z-10 cursor-pointer">
                 
                 <div class="flex items-center justify-between w-full h-[80px] peer-checked:[&_.setinha]:-rotate-180">
@@ -505,7 +520,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                     </div>
                 </div>
                 
-                <!-- Resposta -->
+                <!-- Answer -->
                 <div class="grid grid-rows-[0fr] transition-all duration-300 peer-checked:grid-rows-[1fr]">
                     <div class="overflow-hidden">
                         <!-- Texto ajustado: text-[14px] no mobile, text-[16px] no md -->
@@ -568,7 +583,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
         
     </div>
 </section>
-    <!-- SECTION 7: Contato -->
+    <!-- SECTION 7 -->
     <section id="contato" class="w-full bg-transparent py-24 relative overflow-hidden">
         
    
@@ -595,14 +610,14 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                 </p>
             </a>
 
-            <!-- WHATSAPP (Com link direto para o WhatsApp e o emoji correto) -->
-            <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa.%20%F0%9F%98%84" target="_blank" rel="noopener noreferrer" class="flex items-center gap-6 group cursor-pointer w-full md:w-auto">
-                <div class="w-16 h-16 flex-shrink-0">
-                    <img src="images/whats100.webp" alt="WhatsApp" class="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" loading="lazy">
-                </div>
-                <p class="text-[#eeeeee] group-hover:text-[#10e608] transition-colors duration-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400;">
-                    +55 (43) 9 9956-0109
-                </p>
+            <!-- WHATSAPP Link -->
+            <a href="https://wa.me/5543999560109?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="flex items-center gap-6 group cursor-pointer w-full md:w-auto">
+            <div class="w-16 h-16 flex-shrink-0">
+            <img src="images/whats100.webp" alt="WhatsApp" class="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300" loading="lazy">
+            </div>
+            <p class="text-[#eeeeee] group-hover:text-[#10e608] transition-colors duration-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400;">
+        +55 (43) 9 9956-0109
+            </p>
             </a>
 
             <!-- LOCALIZAÇÃO -->
