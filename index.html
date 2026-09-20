@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
 <!-- SECTION 3 O Formato Ideal -->
 <section class="w-full bg-[#0a0a0a] py-12 xl:py-8 flex items-center justify-center relative overflow-hidden">
     
-    <!-- 1. GRID -->
+    <!-- 1. GRID BACKGROUND -->
     <div class="absolute inset-0 z-0 opacity-15 bg-[linear-gradient(to_right,#eeeeee_1px,transparent_1px),linear-gradient(to_bottom,#eeeeee_1px,transparent_1px)] bg-[size:65px_65px] bg-[position:32px_32px]"></div>
     
     <!-- 2. Main content -->
@@ -303,10 +303,10 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
         </p>
 
         <!-- CARDS GRID -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[24px] w-full mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[24px] w-full mb-10 items-center">
             
-            <!-- CARD 1: Landing Pages -->
-            <div class="bg-[#101010] border border-[#eeeeee] rounded-[15px] p-6 flex flex-col h-full">
+            <!-- CARD 1: Landing Pages (Default Selected - Maior e Verde) -->
+            <div onclick="selectService(this)" data-type="Landing Page" class="card-option cursor-pointer bg-[#101010] border border-[#00dd00] hover:border-[#00dd00] scale-105 z-10 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col h-full">
                 <div class="mb-4 h-8 w-8">
                     <img src="images/rocketlp.webp" alt="Landing Pages Icon" class="w-full h-full object-contain">
                 </div>
@@ -314,12 +314,15 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                     Landing pages
                 </h3>
                 <p class="text-[#eeeeee]" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
-                    Páginas de alta conversão focadas em um único objetivo: transformar o seu visitante em cliente de forma rápida, sem distrações
+                    Páginas de alta conversão focadas em um único objetivo: transformar o seu visitante em cliente de forma rápida, sem distrações.
                 </p>
+                <div class="mt-auto pt-4">
+                    <span class="text-[#eeeeee] text-[12px]" style="font-family: 'Montserrat', sans-serif;">A partir de R$ 690,00</span>
+                </div>
             </div>
 
-            <!-- CARD 2: One Pages -->
-            <div class="bg-[#101010] border border-[#eeeeee] rounded-[15px] p-6 flex flex-col h-full">
+            <!-- CARD 2: One Pages (Menor e borda cinza) -->
+            <div onclick="selectService(this)" data-type="One Page" class="card-option cursor-pointer bg-[#101010] border border-[#eeeeee] hover:border-[#00dd00] scale-95 z-0 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col h-full">
                 <div class="text-white mb-4 h-8 flex items-end">
                     <span class="text-3xl border-b-2 border-white leading-none pb-1 pr-1" style="font-family: 'Orbitron', sans-serif;">1</span>
                 </div>
@@ -327,46 +330,60 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                     One Pages
                 </h3>
                 <p class="text-[#eeeeee]" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
-                    Todas as informações do seu negócio organizadas em uma única página rápida e dinâmica. A escolha perfeita para quem busca agilidade e impacto visual
+                    Informações do seu negócio organizadas em uma única página rápida e dinâmica. A escolha perfeita para quem busca agilidade e impacto visual.
                 </p>
+                <div class="mt-auto pt-4">
+                    <span class="text-[#eeeeee] text-[12px]" style="font-family: 'Montserrat', sans-serif;">A partir de R$ 550,00</span>
+                </div>
             </div>
 
-            <!-- CARD 3: Sites Institucionais -->
-            <div class="bg-[#101010] border border-[#eeeeee] rounded-[15px] p-6 flex flex-col h-full">
+            <!-- CARD 3: Sites Institucionais (Menor e borda cinza) -->
+            <div onclick="selectService(this)" data-type="Site Institucional" class="card-option cursor-pointer bg-[#101010] border border-[#eeeeee] hover:border-[#00dd00] scale-95 z-0 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col h-full">
                 <div class="mb-4 h-8 w-8">
                     <img src="images/badge.webp" alt="Sites Institucionais Icon" class="w-full h-full object-contain">
                 </div>
                 <h3 class="text-[#EEEEEE] mb-3" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
                     Sites Institucionais
                 </h3>
-                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
-                    A vitrine completa da sua empresa. A estrutura ideal para apresentar seus serviços, portfólio e blindar o profissionalismo do seu nome na internet.
+                <p class="text-[#eeeeee]" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                    A página de informações completa da sua empresa. A estrutura ideal para apresentar seus serviços, portfólio e blindar o profissionalismo do seu nome na internet.
                 </p>
+                <div class="mt-auto pt-4">
+                    <span class="text-[#eeeeee] text-[12px]" style="font-family: 'Montserrat', sans-serif;">A partir de R$ 1.250,00</span>
+                </div>
             </div>
 
-            <!-- CARD 4: E-commerces -->
-            <div class="bg-[#101010] border border-[#eeeeee] rounded-[15px] p-6 flex flex-col h-full">
+            <!-- CARD 4: E-commerces (Menor e borda cinza) -->
+            <div onclick="selectService(this)" data-type="E-commerce" class="card-option cursor-pointer bg-[#101010] border border-[#eeeeee] hover:border-[#00dd00] scale-95 z-0 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col h-full">
                 <div class="mb-4 h-8 w-8">
                     <img src="images/stores.webp" alt="E-commerces Icon" class="w-full h-full object-contain">
                 </div>
                 <h3 class="text-[#EEEEEE] mb-3" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
                     E-commerces
                 </h3>
-                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
-                    Lojas virtuais simplificadas, seguras e fáceis de gerenciar. O seu melhor vendedor trabalhando para o seu negócio 24 horas por dia. Feitas via Shopify ou Wix
+                <p class="text-[#eeeeee]" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                    Lojas virtuais simplificadas, seguras e fáceis de gerenciar. O seu melhor vendedor trabalhando para o seu negócio 24 horas por dia. Feitas via Shopify ou Wix.
                 </p>
+                <div class="mt-auto pt-4">
+                    <span class="text-[#eeeeee] text-[12px]" style="font-family: 'Montserrat', sans-serif;">A partir de R$ 4.750,00</span>
+                </div>
             </div>
 
         </div>
 
-        <!-- BUTTON -->
-       <a href="https://wa.me/5543998066737?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
-    Quero meu website
-    <span class="group-hover:translate-x-1 transition-transform">→</span>
-    </a>
+        <!-- DYNAMIC BUTTON -->
+        <!-- Note que o href inicial já está com o novo texto codificado -->
+        <a id="dynamic-cta" href="https://wa.me/5543998066737?text=Ol%C3%A1%20equipe%20da%20Glass%20Digital%20%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20Landing%20Page" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[380px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+            <span id="cta-text">Pedir Landing Page agora</span>
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
 
     </div>
 </section>
+
+<!-- SCRIPT FOR CARD SELECTION & BUTTON UPDATE -->
+<script>function selectService(e){document.querySelectorAll(".card-option").forEach((e=>{e.classList.remove("border-[#00dd00]","scale-105","z-10"),e.classList.add("border-[#eeeeee]","scale-95","z-0")})),e.classList.remove("border-[#eeeeee]","scale-95","z-0"),e.classList.add("border-[#00dd00]","scale-105","z-10");const t=e.getAttribute("data-type");document.getElementById("cta-text").innerText=`Pedir ${t} agora`,document.getElementById("dynamic-cta").href=`https://wa.me/5543998066737?text=${encodeURIComponent("Olá equipe da Glass Digital ! Vim pelo site e gostaria de um orçamento para um "+t)}`}</script>
+
 <section class="w-full bg-transparent py-12 xl:py-8 flex items-center justify-center relative overflow-hidden">
     <!-- Main content -->
     <div class="max-w-[1920px] w-full mx-auto px-[24px] flex flex-col items-center relative z-10">
