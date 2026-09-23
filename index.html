@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
             
             <!-- 5 columns -->
             <div class="md:col-span-5 text-center md:text-left">
-                <!-- Adicionado md:whitespace-nowrap para forçar o texto a ficar em 1 linha no PC -->
+               
                 <h2 class="text-[#00dd00] leading-tight text-[24px] md:text-[24px] md:whitespace-nowrap" style="font-family: 'Orbitron', sans-serif; font-weight: 700;">
                     Quem já confia em nós:
                 </h2>
@@ -259,20 +259,20 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
     
    <!-- SECTION 2 -->
     <section class="w-full bg-transparent py-20 relative z-30">
-        <!-- Contêiner padronizado: max-w-5xl e px-[20px] -->
+        <!-- 20px container -->
         <div class="max-w-5xl w-full mx-auto px-[20px]">
             
            
             <div class="grid grid-cols-1 md:grid-cols-12 gap-[24px] items-center">
                 
-                <!-- TÍTULO: 5 Colunas -->
+                <!-- Title -->
                 <div class="md:col-span-5">
                     <h2 class="text-[#00dd00] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 24px; font-weight: 700;">
                         Te entendemos
                     </h2>
                 </div>
 
-                <!-- TEXTO: 6 Colunas, começando na 7ª (empurrado para a direita) -->
+                
                 <div class="md:col-span-6 md:col-start-7">
                     <p class="text-white" style="font-family: 'Montserrat', sans-serif; font-weight: 400; line-height: 1.6;">
                         Você investe milhares de reais na sua fachada física, mas deixa a sua vitrine digital abandonada. O resultado? O seu cliente pesquisa pelo seu serviço no celular, encontra um site confuso (ou não encontra nada), e acaba comprando do seu concorrente
@@ -283,11 +283,83 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
 
         </div>
     </section>
+<section class="w-full bg-[#0a0a0a] py-16 flex items-center justify-center relative overflow-hidden">
+    
+    <!-- 1. GRID BACKGROUND  -->
+    <div class="absolute inset-0 z-0 opacity-15 bg-[linear-gradient(to_right,#eeeeee_1px,transparent_1px),linear-gradient(to_bottom,#eeeeee_1px,transparent_1px)] bg-[size:65px_65px] bg-[position:32px_32px]"></div>
+    
+    <!-- 2. MAIN CONTENT  -->
+    <div class="max-w-[1920px] w-full mx-auto px-[20px] flex flex-col items-center relative z-10">
+        
+        <!-- SECTION TITLE -->
+        <h2 class="text-[#00dd00] text-center mb-[64px] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 700;">
+            E por que a Glass Digital ?
+        </h2>
+
+        <!-- CARDS GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[24px] w-full mb-[64px]">
+
+            <!-- CARD 1: Tecnologia Vidro fumê -->
+            <div class="rounded-[15px] p-8 md:p-10 flex flex-col h-auto md:h-[340px] border border-transparent" style="background: linear-gradient(#101010, #101010) padding-box, linear-gradient(to bottom right, #5504AF 0%, #6E1DA8 100%) border-box;">
+                <!-- icons -->
+                <div class="mb-8 h-10 w-10">
+                    <img src="images/vidrofume.webp" alt="Tecnologia Vidro fumê" class="w-full h-full object-contain">
+                </div>
+                <!-- Card title -->
+                <h3 class="text-[#EEEEEE] mb-6" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+                    Tecnologia Vidro fumê
+                </h3>
+                <!-- Card text -->
+                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                    Ofuscamos as páginas com nosso código utilizando a tecnologia Vidro Fumê, protegendo-o contra ameaças invisíveis. Já para o seu e-commerce, unimos o nosso design focado em vendas à infraestrutura de segurança das maiores plataformas do mercado global
+                </p>
+            </div>
+
+            <!-- CARD 2: SEO and performance -->
+            <div class="bg-[#101010] rounded-[15px] p-8 md:p-10 flex flex-col h-auto md:h-[340px] border border-[#eeeeee]">
+                <!-- Icon -->
+                <div class="mb-8 h-10 w-10">
+                    <img src="images/magnify.webp" alt="SEO e performance" class="w-full h-full object-contain">
+                </div>
+                <!-- Card title -->
+                <h3 class="text-[#EEEEEE] mb-6" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+                    SEO e performance
+                </h3>
+                <!-- Card text -->
+                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                    Ser colocado no Google é apenas o primeiro passo. Construímos a sua vitrine digital otimizada para as buscas (SEO) e com carregamento rápido. Assim, novos clientes acham a sua empresa mais facilmente sem ser penalizada.
+                </p>
+            </div>
+
+            <!-- CARD 3: Strategic Design -->
+            <div class="bg-[#101010] rounded-[15px] p-8 md:p-10 flex flex-col h-auto md:h-[340px] border border-[#eeeeee]">
+                <!-- Icon -->
+                <div class="mb-8 h-10 w-10">
+                    <img src="images/brilho.webp" alt="Design estratégico" class="w-full h-full object-contain">
+                </div>
+                <!-- Card title -->
+                <h3 class="text-[#EEEEEE] mb-6" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
+                    Design estratégico
+                </h3>
+                <!-- Card text -->
+                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
+                    Nós construímos ferramentas de negócios com design agradável. Cada botão, texto e imagem da sua fachada digital é posicionado estrategicamente para guiar o cliente. Quanto mais fácil for navegar, mais vendas você fecha.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- BUTTON -->
+        <a href="https://wa.me/5543998066737?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+            Quero meu website
+            <span class="group-hover:translate-x-1 transition-transform">→</span>
+        </a>
+
+    </div>
+</section>
+
 <!-- SECTION 3 O Formato Ideal -->
 <section class="w-full bg-[#0a0a0a] py-12 xl:py-8 flex items-center justify-center relative overflow-hidden">
-    
-    <!-- 1. GRID BACKGROUND -->
-    <div class="absolute inset-0 z-0 opacity-15 bg-[linear-gradient(to_right,#eeeeee_1px,transparent_1px),linear-gradient(to_bottom,#eeeeee_1px,transparent_1px)] bg-[size:65px_65px] bg-[position:32px_32px]"></div>
     
     <!-- 2. Main content -->
     <div class="max-w-[1920px] w-full mx-auto px-[20px] flex flex-col items-center relative z-10">
@@ -303,10 +375,11 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
         </p>
 
         <!-- CARDS GRID -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[24px] w-full mb-10 items-center">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[24px] w-full max-w-[340px] md:max-w-none mx-auto mb-10">
             
             <!-- CARD 1: Landing Pages (Default Selected - Maior e Verde) -->
-            <div onclick="selectService(this)" data-type="Landing Page" class="card-option cursor-pointer bg-[#101010] border border-[#00dd00] hover:border-[#00dd00] scale-105 z-10 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col h-full">
+            <div onclick="selectService(this)" data-type="Landing Page" class="card-option cursor-pointer bg-[#101010] border border-[#00dd00] hover:border-[#00dd00] scale-105 z-10 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col aspect-square">
                 <div class="mb-4 h-8 w-8">
                     <img src="images/rocketlp.webp" alt="Landing Pages Icon" class="w-full h-full object-contain">
                 </div>
@@ -321,8 +394,8 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                 </div>
             </div>
 
-            <!-- CARD 2: One Pages (Menor e borda cinza) -->
-            <div onclick="selectService(this)" data-type="One Page" class="card-option cursor-pointer bg-[#101010] border border-[#eeeeee] hover:border-[#00dd00] scale-95 z-0 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col h-full">
+            <!-- CARD 2: One Pages  -->
+            <div onclick="selectService(this)" data-type="One Page" class="card-option cursor-pointer bg-[#101010] border border-[#eeeeee] hover:border-[#00dd00] scale-95 z-0 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col aspect-square">
                 <div class="text-white mb-4 h-8 flex items-end">
                     <span class="text-3xl border-b-2 border-white leading-none pb-1 pr-1" style="font-family: 'Orbitron', sans-serif;">1</span>
                 </div>
@@ -337,8 +410,8 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                 </div>
             </div>
 
-            <!-- CARD 3: Sites Institucionais (Menor e borda cinza) -->
-            <div onclick="selectService(this)" data-type="Site Institucional" class="card-option cursor-pointer bg-[#101010] border border-[#eeeeee] hover:border-[#00dd00] scale-95 z-0 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col h-full">
+            <!-- CARD 3: Sites Institucionais  -->
+            <div onclick="selectService(this)" data-type="Site Institucional" class="card-option cursor-pointer bg-[#101010] border border-[#eeeeee] hover:border-[#00dd00] scale-95 z-0 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col aspect-square">
                 <div class="mb-4 h-8 w-8">
                     <img src="images/badge.webp" alt="Sites Institucionais Icon" class="w-full h-full object-contain">
                 </div>
@@ -353,8 +426,8 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
                 </div>
             </div>
 
-            <!-- CARD 4: E-commerces (Menor e borda cinza) -->
-            <div onclick="selectService(this)" data-type="E-commerce" class="card-option cursor-pointer bg-[#101010] border border-[#eeeeee] hover:border-[#00dd00] scale-95 z-0 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col h-full">
+            <!-- CARD 4: E-commerces -->
+            <div onclick="selectService(this)" data-type="E-commerce" class="card-option cursor-pointer bg-[#101010] border border-[#eeeeee] hover:border-[#00dd00] scale-95 z-0 transition-all duration-500 ease-in-out rounded-[15px] p-6 flex flex-col aspect-square">
                 <div class="mb-4 h-8 w-8">
                     <img src="images/stores.webp" alt="E-commerces Icon" class="w-full h-full object-contain">
                 </div>
@@ -372,8 +445,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
         </div>
 
         <!-- DYNAMIC BUTTON -->
-        <!-- Note que o href inicial já está com o novo texto codificado -->
-        <a id="dynamic-cta" href="https://wa.me/5543998066737?text=Ol%C3%A1%20equipe%20da%20Glass%20Digital%20%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20Landing%20Page" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[380px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
+        <a id="dynamic-cta" href="https://wa.me/5543998066737?text=Ol%C3%A1%20equipe%20da%20Glass%20Digital%20%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento%20para%20um%20Landing%20Page" target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full max-w-[340px] sm:max-w-[380px] h-[48px] uppercase tracking-wide flex mx-auto items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
             <span id="cta-text">Pedir Landing Page agora</span>
             <span class="group-hover:translate-x-1 transition-transform">→</span>
         </a>
@@ -383,83 +455,7 @@ document.addEventListener("DOMContentLoaded",(()=>{const e=document.getElementBy
 
 <!-- SCRIPT FOR CARD SELECTION & BUTTON UPDATE -->
 <script>function selectService(e){document.querySelectorAll(".card-option").forEach((e=>{e.classList.remove("border-[#00dd00]","scale-105","z-10"),e.classList.add("border-[#eeeeee]","scale-95","z-0")})),e.classList.remove("border-[#eeeeee]","scale-95","z-0"),e.classList.add("border-[#00dd00]","scale-105","z-10");const t=e.getAttribute("data-type");document.getElementById("cta-text").innerText=`Pedir ${t} agora`,document.getElementById("dynamic-cta").href=`https://wa.me/5543998066737?text=${encodeURIComponent("Olá equipe da Glass Digital ! Vim pelo site e gostaria de um orçamento para um "+t)}`}</script>
-
-<section class="w-full bg-transparent py-12 xl:py-8 flex items-center justify-center relative overflow-hidden">
-    <!-- Main content -->
-    <div class="max-w-[1920px] w-full mx-auto px-[24px] flex flex-col items-center relative z-10">
-
-        <!-- SECTION TITLE -->
-        <h2 class="text-[#00dd00] text-center mb-[64px] leading-tight" style="font-family: 'Orbitron', sans-serif; font-size: 28px; font-weight: 700;">
-            E por que a Glass Digital ?
-        </h2>
-
-        <!-- CARDS GRID -->
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-[24px] w-full mb-[64px]">
-
-            <!-- CARD 1: Tecnologia Vidro fumê -->
-            
-            <div class="rounded-[15px] p-8 md:p-10 flex flex-col h-auto md:h-[400px] border border-transparent" style="background: linear-gradient(#101010, #101010) padding-box, linear-gradient(to bottom right, #5504AF 0%, #6E1DA8 100%) border-box;">
-                <!-- icons -->
-                <div class="mb-8 h-10 w-10">
-                    <img src="images/vidrofume.webp" alt="Tecnologia Vidro fumê" class="w-full h-full object-contain">
-                </div>
-                <!-- Card title -->
-                <h3 class="text-[#EEEEEE] mb-6" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
-                    Tecnologia Vidro fumê
-                </h3>
-                <!-- Card text -->
-                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
-                    Para sites e páginas de conversão, blindamos o código com a tecnologia Vidro Fumê, protegendo a sua estrutura contra ameaças invisíveis. Já para o seu e-commerce, unimos o nosso design focado em vendas à infraestrutura de segurança das maiores plataformas do mercado global
-                </p>
-            </div>
-
-            <!-- CARD 2: SEO and performance -->
-            
-            <div class="bg-[#101010] rounded-[15px] p-8 md:p-10 flex flex-col h-auto md:h-[400px] border border-[#eeeeee]">
-                <!-- Icon -->
-                <div class="mb-8 h-10 w-10">
-                    <img src="images/magnify.webp" alt="SEO e performance" class="w-full h-full object-contain">
-                </div>
-                <!-- Card title -->
-                <h3 class="text-[#EEEEEE] mb-6" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
-                    SEO e performance
-                </h3>
-                <!-- Card text -->
-                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
-                    Ser encontrado no Google é apenas o primeiro passo. Construímos a sua vitrine digital otimizada para as buscas (SEO) e com carregamento instantâneo. Assim, novos clientes acham a sua empresa facilmente e não fogem para a concorrência por causa de lentidão no celular.
-                </p>
-            </div>
-
-            <!-- CARD 3: Strategic Design -->
-            
-            <div class="bg-[#101010] rounded-[15px] p-8 md:p-10 flex flex-col h-auto md:h-[400px] border border-[#eeeeee]">
-                <!-- Icon -->
-                <div class="mb-8 h-10 w-10">
-                    <img src="images/brilho.webp" alt="Design estratégico" class="w-full h-full object-contain">
-                </div>
-                <!-- Card title -->
-                <h3 class="text-[#EEEEEE] mb-6" style="font-family: 'Orbitron', sans-serif; font-size: 20px; font-weight: 700;">
-                    Design estratégico
-                </h3>
-                <!-- Card text -->
-                <p class="text-gray-300" style="font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 400; line-height: 1.6;">
-                    Nós não fazemos apenas páginas bonitas, construímos ferramentas de negócios. Cada botão, texto e imagem da sua fachada digital é posicionado estrategicamente para guiar o cliente. Quanto mais fácil for navegar, mais vendas você fecha.
-                </p>
-            </div>
-
-        </div>
-
-        <a href="https://wa.me/5543998066737?text=Ol%C3%A1%2C%20equipe%20Glass%20Digital%21%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20a%20cria%C3%A7%C3%A3o%20de%20um%20website%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" onclick="if(typeof fbq === 'function') { fbq('track', 'Lead'); }" class="bg-[#00dd00] hover:bg-[#0ec007] text-black rounded-[5px] transition-colors duration-300 w-full sm:w-[294px] h-[48px] uppercase tracking-wide flex items-center justify-center gap-2 group" style="font-family: 'Montserrat', sans-serif; font-size: 12px; font-weight: 600;">
-        Quero meu website
-        <span class="group-hover:translate-x-1 transition-transform">→</span>
-        </a>
-
-    </div>
-</section>
-
-
-    
-<!-- SECTION 5: Quem somos? -->
+<!-- SECTION 4: Quem somos? -->
     
     <section id="sobrenos" class="w-full bg-transparent py-8 relative overflow-hidden">
         
